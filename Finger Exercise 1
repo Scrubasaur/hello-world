@@ -1,0 +1,11 @@
+#Finger exercise:  Write a program that examines three variables—x, y, and z— and prints the largest odd number among them.  
+#If none of them are odd, it should print a message to that effect.
+
+if x%2 !== 0 and x > y and x > z:
+  print(x)
+elif y%2 !== 0 and y > x and y > z:
+  print(y)
+elif z%2 !== 0 and z > x and z > y:   
+  print(z)
+else:
+  print("Everything is even")
