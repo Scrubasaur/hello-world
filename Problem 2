@@ -1,0 +1,17 @@
+#Assume s is a string of lower case characters.
+#Write a program that prints the number of times the string 'bob' occurs in s.
+#For example, if s = 'azcbobobegghakl', then your program should print
+#Number of times bob occurs is: 2
+#Simple use for loop and slicing
+
+count = 0
+begin = 0
+end = 3
+
+for x in s:
+    if s[begin:end] == 'bob':
+        count +=1
+    begin += 1
+    end += 1
+    
+print("Number of times bob occurs is: " + str(count))
