@@ -1,4 +1,15 @@
-Finger exercise:  Write a program that asks the user to input 10 integers, and then prints the largest odd number that was entered.  
-If no odd number was entered, it should print a message to that effect. 
+#Finger exercise:  Write a program that asks the user to input 10 integers, 
+#and then prints the largest odd number that was entered.  
+#If no odd number was entered, it should print a message to that effect. 
 
-numbers = [] #creating a blank list to collect 10 integers
+largest = 0 #need to figure out how to initialize largest to a variable that will allow me to calculate negatives numbers
+
+for x in range(10):
+    number = int(input("Enter an integer: "))
+    if abs(number%2) == 1 and number > largest: #abs is for negative numbers but couldn't get the program to calculate it when initalized to 0
+        largest = number
+
+if largest == 0: #largest needs to initialized to something else. this is a placeholder until I learn more. This program will work on all positive numbers.
+    print ("No odd number was entered")
+else:
+    print("The largest odd number entered is " + str(largest))
