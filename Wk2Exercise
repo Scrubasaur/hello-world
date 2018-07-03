@@ -1,0 +1,28 @@
+#The program works as follows: you (the user) thinks of an integer between 0 
+#(inclusive) and 100 (not inclusive). The computer makes guesses, and you give
+# it input - is its guess too high or too low? 
+#Using bisection search, the computer will guess the user's secret number!
+guess = False
+high = 100
+low = 0
+
+ask = ""
+answer = ""
+
+print("Please think of a number between 0 and 100!")
+
+while guess == False:
+    avg = ((high + low) // 2.0) #the way the program worked, it rounded down and // discards the remainder so it works out well here
+    print("Is your secret number " + str(avg) + "?")
+    ask = input("Enter 'h' to indicate the guess is too high. Enter 'l' to indicate the guess is too low. Enter 'c' to indicate I guessed correctly.")
+    if ask == "h":
+        high = avg
+    elif ask == "l":
+        low = avg
+    elif ask == "c":
+        answer = avg
+        guess = True
+    else:
+        print("Please enter a valid entry")
+
+print("Game over. Your secret number was: " + str(answer))
