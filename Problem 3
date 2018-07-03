@@ -7,3 +7,18 @@
 #Note: This problem may be challenging. We encourage you to work smart. 
 #If you've spent more than a few hours on this problem, we suggest that you move on to a different part of the course.
 #If you have time, come back to this problem after you've had a break and cleared your head.
+#This was hard. 
+
+s = 'agjjngfasq'
+temp = s[0] #initialized temp to the beginning of the string
+longest = s[0] #initialized longest substring to the beginning in case the longest string is only just the first letter
+
+for i in range(len(s)-1): #for loop with the length being 1 less than the total length since our for loop will be looking to the next letter of each iteration
+    if s[i + 1] >= s[i]: #if the next letter is bigger or equal to the current letter
+        temp += s[i+1] #it will add that letter to the temp string
+        if len(temp) > len(longest): #if that temp string is longer than the longest string
+            longest = temp #it will become the longest string
+    else:
+        temp = s[i+1] #otherwise the next letter will be the starting point for temp
+
+print("Longest substring in alphabetical order is: " + longest)
