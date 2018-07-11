@@ -1,0 +1,32 @@
+#The program should print out one line: the lowest monthly payment that will 
+#pay off all debt in under 1 year, for example:
+#Lowest Payment: 180 
+#Assume that the interest is compounded monthly according to the balance at the
+#end of the month (after the payment for that month is made). The monthly
+# payment must be a multiple of $10 and is the same for all months. 
+#Notice that it is possible for the balance to become negative using this 
+#payment scheme, which is okay.
+"""
+input: balance and annualInterestRate
+output: Lowest payment on a monthly basis to pay off entire balance in a year 
+"""
+balance = 3329
+annualInterestRate = 0.2
+ub = 0
+b = balance #need balance to stay the same when I go back throughloop so I have this to reference the original
+problem = False
+mp = ((balance/12)+9) // 10 * 10 #lower bound, rounds up to the nearest multiple of 10, will not work with decimals
+
+while problem == False: 
+    
+    for month in range(12): #for loop for each month in the year
+        mir = annualInterestRate/12 #monthly interest rate = rate / 12
+        mub = b - mp #monthly unpaid balance = previous balance - monthly payment
+        ub = mub + (mir*mub) #updated balance = monthly unpaid balance + (monthly interest rate x monthly unpaid balance)
+        b = ub
+    if ub <= 0:
+        print("Lowest Payment :" + str(mp))
+        problem = True #True condition met, loop breaks
+    else:
+        mp += 10
+        b = balance
