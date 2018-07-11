@@ -1,0 +1,37 @@
+"""
+input: balance and annual interest rate
+output: Lowest monthly payment to pay off debt in a year
+Have to use bisection search to find the monthly payment that will pay off the balance in a year
+Made the updated balance and previous balance and made it into balance that updates through the loop
+"""
+#example balance
+#balance= 320000
+#example annualInterestRate
+#annualInterestRate= 0.2
+#Lowest Payment: 29157.09 
+mir = annualInterestRate/12 #monthly interest rate
+lower = balance/12 #lower bound of guess range
+upper = (balance * (1 + mir)**12) /12.0 #upper bound of guess range
+mid = (upper + lower) /2 #middle of the two boundaries, also our guess
+b = balance
+problem = False
+while problem == False:
+    mid = (upper + lower) /2
+    for month in range(12): #for loop for each month in the year        
+        b -= mid #monthly unpaid balance = previous balance - monthly payment
+        b += mir*b #updated balance = monthly unpaid balance + (monthly interest rate x monthly unpaid balance)
+        b = round(b, 2)
+        print(b)
+    if b > 0: #if the balance goes above zero, the guess was too low
+        lower = mid #so the guess becomes the lower limit
+        b = balance #resets the balance for future loop
+   
+    elif b < 0:#if the balance goes below zero, the guess was too high
+        upper = mid #so the guess becomes the upper limit
+        b = balance #resets the balance for future loop
+        
+    elif b == 0: #if balance is equal to 0, this means the guess whas correct
+        mid = round(mid,2) #this rounds the answer
+        print("Lowest Payment: " + str(mid))
+        problem = True #ends the loop
+    
