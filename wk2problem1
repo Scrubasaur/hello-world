@@ -1,0 +1,13 @@
+balance = 42
+annualInterestRate = 0.2 #annual interest rate
+monthlyPaymentRate = 0.04 #monthly payment rate
+ub = 0
+count = 0
+for month in range(12):
+    mir = annualInterestRate/12 #monthly interest rate = rate / 12
+    mmp = monthlyPaymentRate * balance #min monthly payment = monthly payment rate * previous balance
+    mub = balance - mmp #monthly unpaid balance = previous balance - minimum monthly payment
+    ub = round(mub + (mir*mub),2) #updated balance = monthly unpaid balance + (monthly interest rate x monthly unpaid balance)
+    count += 1
+    balance = ub
+    print("Month " + str(count) + " Remaining balance: " + str(ub))
